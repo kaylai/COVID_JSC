@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1>COVID-19 Harris County, TX Data</h1>
+            A couple of quick scripts to plot up COVID-19 data in Harris County, Texas.
+
+            These plots are designed to emulate some of the data being used by Johnson Space Center to determine when more employees can return to work onsite. Two plots are generated: Daily confirmed cases and Cumulative confirmed cases. In both plots, bars represent daily values and lines represent a 5-day moving average. In the Daily confirmed cases plot, a red or green shaded box covering the previous 14 days of data indicates whether the trend of daily cases is positive (red) or negative (green).
+            <P>&nbsp;</p>
+            <P><iframe src="plotfile.html", width="1000", height="2000"></iframe>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,12 @@
+dj-database-url==0.4.2
+Django==1.11.29
+gunicorn==19.6.0
+psycopg2
+whitenoise==2.0.6
+webapp2==2.5.2
+flask==0.12.3
+numpy
+pandas
+matplotlib==3.1.2
+mpld3==0.3
+requests==2.23.0

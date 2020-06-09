@@ -1,9 +1,11 @@
 import pandas as pd
 import numpy as np
 import matplotlib
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt, mpld3
 import matplotlib.dates as mdates
+from mpld3 import plugins, utils
 from datetime import datetime, timedelta
+import mpl_mousepositiondateplugin as mplm
 
 #define function to calculate a 5-day moving average
 def moving_average(a, n=5) :
@@ -39,15 +41,16 @@ closest_date_with_data = min(datetime_list, key=lambda d: abs(d - fourteen_days_
 fourteen_days_index = datetime_list.index(closest_date_with_data) #get index of our "14 days ago" date
 
 last_14_days = daily_confirmed[(fourteen_days_index - len(daily_confirmed)):]
+last_14_days_datetimes = datetime_list[(fourteen_days_index - len(daily_confirmed)):]
 trend = [0]
 for i in range(len(last_14_days)):
 	if i>0:
 		trend.append(last_14_days[i] - last_14_days[i-1])
 
 if sum(last_14_days) > 0:
-	trend_color = 'red'
+	trend_color = '#faafaf'
 elif sum(last_14_days) <= 0:
-	trend_color = 'green'
+	trend_color = 'mediumseagreen'
 
 
 #calculate the simple moving average with a window size of 5
@@ -64,16 +67,35 @@ confirmed_cum_moving = list(moving_average(confirmed_data))
 confirmed_cum_moving = leading_zeroes + confirmed_cum_moving
 harris_data["Confirmed_Cum_Moving"] = confirmed_cum_moving
 
-
-fig, ax = plt.subplots(2, sharex=True)
-ax[0].bar(datetime_list, harris_data["Daily_Confirmed"], color='papayawhip', label="Daily Confirmed Cases")
-ax[0].plot(datetime_list, harris_data["Confirmed_Moving"], '-', color='darkorange', label="5-day moving average")
+#DO SOME EPLOTTING
+fig, ax = plt.subplots(2, sharex=True, figsize=(10,10))
+barpoints = ax[0].bar(datetime_list, harris_data["Daily_Confirmed"], color='papayawhip', label="Daily Confirmed Cases")
+trend_barpoints = ax[0].bar(last_14_days_datetimes, last_14_days, color=trend_color, label="Last 14 Days")
+confirmed_line = ax[0].plot(datetime_list, harris_data["Confirmed_Moving"], '-', linewidth=3, color='darkorange', label="5-day moving average")
 ax[0].axvspan(closest_date_with_data, datetime_list[-1], alpha=0.25, color=trend_color)
-ax[1].bar(datetime_list, harris_data["Confirmed"], color='lightblue', label="Cumulative Confirmed Cases")
-ax[1].plot(datetime_list, harris_data["Confirmed_Cum_Moving"], '-', color='darkblue', label="5-day moving average")
+cum_barpoints = ax[1].bar(datetime_list, harris_data["Confirmed"], color='lightblue', label="Cumulative Confirmed Cases")
+ax[1].plot(datetime_list, harris_data["Confirmed_Cum_Moving"], '-', linewidth=3, color='darkblue', label="5-day moving average")
 fig.autofmt_xdate()
 ax[1].fmt_xdata = mdates.DateFormatter('%m-%d-%Y')
 ax[1].xaxis.set_major_locator(mdates.AutoDateLocator())
+ax[1].set_xlabel('Date')
+ax[0].set_ylabel('Daily Confirmed Cases')
+ax[1].set_ylabel('Cumulative Confirmed Cases')
+ax[0].set_title('COVID-19 Cases in Harris County, TX')
 ax[0].legend()
 ax[1].legend()
-plt.show()
+
+mpld3.plugins.connect(fig, mplm.MousePositionDatePlugin())
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_confirmed.tolist()))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_days))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
+mpld3.save_html(fig, "./uploads/core/templates/core/plotfile.html")
+
+mpld3.show()
+
+
+
+
+
+
+
