@@ -8,7 +8,6 @@ from uploads.core import views
 
 urlpatterns = [
     url(r'^$', views.home, name='home'),
-    url(r'^readthedocs', views.readthedocs, name='readthedocs'),
     url(r'^admin/', admin.site.urls),
     url(r'^plotfile', views.plotfile, name='plotfile')
 ]
