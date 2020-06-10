@@ -21,9 +21,7 @@ harris_data["Date"] = harris_data["Date"].astype('datetime64[ns]')
 confirmed_data = harris_data["Confirmed"].tolist()
 daily_confirmed = [0]
 for i in range(len(confirmed_data)):
-	if i==8:
-		daily_confirmed.append(0)
-	elif i>0:
+	if i>0:
 		daily_confirmed.append(confirmed_data[i]-confirmed_data[i-1])
 harris_data["Daily_Confirmed"] = daily_confirmed
 
@@ -91,7 +89,7 @@ mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in tr
 mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
 mpld3.save_html(fig, "./uploads/core/templates/core/plotfile.html")
 
-#mpld3.show()
+mpld3.show()
 
 
 

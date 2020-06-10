@@ -32,13 +32,52 @@ for date in daterange:
 		harris = pd.DataFrame(full_csv.loc["Harris, Texas, US"])
 
 		harris = harris.transpose()
-		confirmed.append(harris.iloc[0]["Confirmed"])
-		deaths.append(harris.iloc[0]["Deaths"])
-		recovered.append(harris.iloc[0]["Recovered"])
-		active.append(harris.iloc[0]["Active"])
+		try:
+			confirmed.append(harris.iloc[0]["Confirmed"])
+		except:
+			confirmed.append(0)
+		try:
+			deaths.append(harris.iloc[0]["Deaths"])
+		except:
+			deaths.append(0)
+		try:
+			recovered.append(harris.iloc[0]["Recovered"])
+		except:
+			recovered.append(0)
+		try:
+			active.append(harris.iloc[0]["Active"])
+		except:
+			active.append(0)
 		good_dates.append(date)
 	except:
 		pass
+
+	try:
+		s = requests.get(url).content
+		full_csv = pd.read_csv(io.StringIO(s.decode('utf-8')), index_col="Combined_Key")
+		harris = pd.DataFrame(full_csv.loc["Harris,Texas,US"])
+
+		harris = harris.transpose()
+		try:
+			confirmed.append(harris.iloc[0]["Confirmed"])
+		except:
+			confirmed.append(0)
+		try:
+			deaths.append(harris.iloc[0]["Deaths"])
+		except:
+			deaths.append(0)
+		try:
+			recovered.append(harris.iloc[0]["Recovered"])
+		except:
+			recovered.append(0)
+		try:
+			active.append(harris.iloc[0]["Active"])
+		except:
+			active.append(0)
+		good_dates.append(date)
+	except:
+		pass
+		
 
 #Make a new dataframe and turn your lists of data into columns
 harris_data = pd.DataFrame()
