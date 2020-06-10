@@ -66,7 +66,7 @@ confirmed_cum_moving = leading_zeroes + confirmed_cum_moving
 harris_data["Confirmed_Cum_Moving"] = confirmed_cum_moving
 
 #DO SOME EPLOTTING
-fig, ax = plt.subplots(2, sharex=True, figsize=(10,10))
+fig, ax = plt.subplots(2, figsize=(10,10))
 barpoints = ax[0].bar(datetime_list, harris_data["Daily_Confirmed"], color='papayawhip', label="Daily Confirmed Cases")
 trend_barpoints = ax[0].bar(last_14_days_datetimes, last_14_days, color=trend_color, label="Last 14 Days")
 confirmed_line = ax[0].plot(datetime_list, harris_data["Confirmed_Moving"], '-', linewidth=3, color='darkorange', label="5-day moving average")
@@ -83,13 +83,25 @@ ax[0].set_title('COVID-19 Cases in Harris County, TX')
 ax[0].legend()
 ax[1].legend()
 
+#MAKE LABELS FOR PLOTTED VALUES
+daily_bar_labels = []
+cum_bar_labels = []
+for i in range(len(daily_confirmed)):
+	daily_bar_labels.append(datetime_list[i].strftime('%m-%d-%Y') + ": " + str(daily_confirmed[i]))
+	cum_bar_labels.append(datetime_list[i].strftime('%m-%d-%Y') + ": " + str(confirmed_data[i]))
+
+last_14_bar_labels = []
+for i in range(len(last_14_days)):
+	last_14_bar_labels.append(last_14_days_datetimes[i].strftime('%m-%d-%Y') + ": " + str(last_14_days[i]))
+
+
 mpld3.plugins.connect(fig, mplm.MousePositionDatePlugin())
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_confirmed.tolist()))
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_days))
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_bar_labels))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_bar_labels))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], cum_bar_labels))
 mpld3.save_html(fig, "./uploads/core/templates/core/plotfile.html")
 
-mpld3.show()
+#mpld3.show()
 
 
 

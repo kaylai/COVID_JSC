@@ -85,10 +85,22 @@ ax[0].set_title('COVID-19 Cases in Maricopa County, AZ')
 ax[0].legend()
 ax[1].legend()
 
+#MAKE LABELS FOR PLOTTED VALUES
+daily_bar_labels = []
+cum_bar_labels = []
+for i in range(len(daily_confirmed)):
+	daily_bar_labels.append(datetime_list[i].strftime('%m-%d-%Y') + ": " + str(daily_confirmed[i]))
+	cum_bar_labels.append(datetime_list[i].strftime('%m-%d-%Y') + ": " + str(confirmed_data[i]))
+
+last_14_bar_labels = []
+for i in range(len(last_14_days)):
+	last_14_bar_labels.append(last_14_days_datetimes[i].strftime('%m-%d-%Y') + ": " + str(last_14_days[i]))
+
+
 mpld3.plugins.connect(fig, mplm.MousePositionDatePlugin())
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_confirmed.tolist()))
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_days))
-mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_bar_labels))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_bar_labels))
+mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], cum_bar_labels))
 mpld3.save_html(fig, "uploads/core/templates/core/plotmaricopa.html")
 
 #mpld3.show()
