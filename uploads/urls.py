@@ -10,7 +10,8 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^plotfile', views.plotfile, name='plotfile'),
-    url(r'^plotmaricopa', views.plotmaricopa, name='plotmaricopa')
+    url(r'^plotmaricopa', views.plotmaricopa, name='plotmaricopa'),
+    url(r'^maricopa', views.maricopa, name='maricopa')
 ]
 
 if settings.DEBUG:
