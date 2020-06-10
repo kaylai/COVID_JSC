@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt, mpld3
 import matplotlib.dates as mdates
 from mpld3 import plugins, utils
 from datetime import datetime, timedelta
-import mpl_mousepositiondateplugin as mplm
+import custom_plugins as mplm
 
 #define function to calculate a 5-day moving average
 def moving_average(a, n=5) :
