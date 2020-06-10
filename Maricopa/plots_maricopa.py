@@ -68,7 +68,7 @@ confirmed_cum_moving = leading_zeroes + confirmed_cum_moving
 maricopa_data["Confirmed_Cum_Moving"] = confirmed_cum_moving
 
 #DO SOME EPLOTTING
-fig, ax = plt.subplots(2, sharex=True, figsize=(10,10))
+fig, ax = plt.subplots(2, figsize=(10,10))
 barpoints = ax[0].bar(datetime_list, maricopa_data["Daily_Confirmed"], color='papayawhip', label="Daily Confirmed Cases")
 trend_barpoints = ax[0].bar(last_14_days_datetimes, last_14_days, color=trend_color, label="Last 14 Days")
 confirmed_line = ax[0].plot(datetime_list, maricopa_data["Confirmed_Moving"], '-', linewidth=3, color='darkorange', label="5-day moving average")
