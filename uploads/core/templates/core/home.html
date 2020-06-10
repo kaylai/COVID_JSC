@@ -8,13 +8,23 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12">
-            <h1>COVID-19 Harris County, TX Data</h1>
-            A couple of quick scripts to plot up COVID-19 data in Harris County, Texas. These plots are designed to emulate some of the data being used by Johnson Space Center to determine when more employees can return to work onsite. 
+            <h1>COVID-19 County-level Data</h1>
+            A couple of quick scripts to plot up COVID-19 data in Harris County, Texas and Maricopa County, AZ. These plots are designed to emulate some of the data being used by Johnson Space Center to determine when more employees can return to work onsite. 
+
+            <table align="center">
+              <tr>
+                <td><img src="{% static "img/harris_img.jpg" %}" alt="Harris County"></td>
+                <td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+                <td><img src="{% static "img/maricopa_img.jpg" %}" alt="Maricopa County"></td>
+              </tr>
+            </table>
 
             <h2>How to read these plots</h2>
             Two plots are generated: Daily confirmed cases and Cumulative confirmed cases. In both plots, bars represent daily values and lines represent a 5-day moving average. In the daily confirmed cases plot (top, orange), the color of the bars for the last 14 days of data indicate whether the 2-week trend in cases is increasing (red) or decreasing (green). 
 
             Mousing over either plot shows you the value of the bars. Your cursor position is also shown to the lower right of the plots. You can interact (zoom, pan, return to home axes) with the plots using the gray icons that appear in the lower right of the plots when you mouseover either plot area.
+
+            <p align="center">><img src="{% static "img/How_to_read_plots.jpg" %}" alt="How to read these plots"></p>
 
             <h3>Data source</h3>
             All data used here are from the Johns Hopkins Whiting School of Engineering Center for Systems Science and Engineering. <a href="https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports">https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports</a>
@@ -24,7 +34,6 @@
 
             <P>Author: Kayla Iacovino, 2020. MIT Licensed. <a href="mailto:kaylaiacovino@gmail.com">kaylaiacovino@gmail.com</a>.
             <P>&nbsp;</p>
-            <P><iframe src="plotfile.html", width="1200", height="1200"></iframe>
         </div>
     </div>
 </div>

@@ -11,7 +11,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^plotfile', views.plotfile, name='plotfile'),
     url(r'^plotmaricopa', views.plotmaricopa, name='plotmaricopa'),
-    url(r'^maricopa', views.maricopa, name='maricopa')
+    url(r'^maricopa', views.maricopa, name='maricopa'),
+    url(r'^harris', views.harris, name='harris')
 ]
 
 if settings.DEBUG:

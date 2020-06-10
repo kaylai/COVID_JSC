@@ -23,6 +23,9 @@ def plotmaricopa(request): #this allows the code to render the plotfile.html fil
 def maricopa(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/maricopa.html')
 
+def harris(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/harris.html')
+
 def home(request):
     documents = Document.objects.all()
     return render(request, 'core/home.html', { 'documents': documents })
