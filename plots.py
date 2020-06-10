@@ -91,7 +91,7 @@ mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in tr
 mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
 mpld3.save_html(fig, "./uploads/core/templates/core/plotfile.html")
 
-mpld3.show()
+#mpld3.show()
 
 
 

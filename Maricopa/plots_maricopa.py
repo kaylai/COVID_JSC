@@ -89,9 +89,9 @@ mpld3.plugins.connect(fig, mplm.MousePositionDatePlugin())
 mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in barpoints], daily_confirmed.tolist()))
 mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in trend_barpoints], last_14_days))
 mpld3.plugins.connect(fig, mplm.BarLabelToolTip([utils.get_id(bar) for bar in cum_barpoints], confirmed_data.tolist()))
-mpld3.save_html(fig, "../uploads/core/templates/core/plotmaricopa.html")
+mpld3.save_html(fig, "uploads/core/templates/core/plotmaricopa.html")
 
-mpld3.show()
+#mpld3.show()
 
 
 

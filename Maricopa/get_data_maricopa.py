@@ -78,10 +78,6 @@ for date in daterange:
 	except:
 		pass
 
-# for i in range(len(confirmed)):
-# 	if i>1:
-# 		daily_confirmed.append(confirmed[i]-confirmed[i-1])
-
 #Make a new dataframe and turn your lists of data into columns
 maricopa_data = pd.DataFrame()
 maricopa_data["Date"] = good_dates
@@ -92,6 +88,3 @@ maricopa_data["Active"] = active
 
 with pd.ExcelWriter("Maricopa_Data.xlsx") as writer:
 	maricopa_data.to_excel(writer, 'Maricopa Co., AZ')
-
-# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-#     	print(maricopa_data)

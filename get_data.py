@@ -40,10 +40,6 @@ for date in daterange:
 	except:
 		pass
 
-# for i in range(len(confirmed)):
-# 	if i>1:
-# 		daily_confirmed.append(confirmed[i]-confirmed[i-1])
-
 #Make a new dataframe and turn your lists of data into columns
 harris_data = pd.DataFrame()
 harris_data["Date"] = good_dates
@@ -55,5 +51,3 @@ harris_data["Active"] = active
 with pd.ExcelWriter("Harris_Data.xlsx") as writer:
 	harris_data.to_excel(writer, 'Harris Co., Texas')
 
-# with pd.option_context('display.max_rows', None, 'display.max_columns', None):  # more options can be specified also
-#     	print(harris_data)
