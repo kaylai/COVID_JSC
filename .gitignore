@@ -122,3 +122,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+uploads/.DS_Store
+
+uploads/core/.DS_Store
+
+uploads/core/templates/.DS_Store
