@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 """
 This is our chron job file. This is what needs to auto-run to
 create new plots each day. 
