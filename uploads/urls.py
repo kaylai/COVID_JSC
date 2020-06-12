@@ -10,9 +10,13 @@ urlpatterns = [
     url(r'^$', views.home, name='home'),
     url(r'^admin/', admin.site.urls),
     url(r'^plotfile', views.plotfile, name='plotfile'),
-    url(r'^plotmaricopa', views.plotmaricopa, name='plotmaricopa'),
     url(r'^maricopa', views.maricopa, name='maricopa'),
-    url(r'^harris', views.harris, name='harris')
+    url(r'^plotmaricopa', views.plotmaricopa, name='plotmaricopa'),
+    url(r'^harris', views.harris, name='harris'),
+    url(r'^salt_lake', views.salt_lake, name='salt_lake'),
+    url(r'^plotsalt_lake', views.plotsalt_lake, name='plotsalt_lake'),
+    url(r'^utah', views.utah, name='utah'),
+    url(r'^plotutah', views.plotutah, name='plotutah')
 ]
 
 if settings.DEBUG:

@@ -181,3 +181,50 @@ Getting info for 06-08-2020
 Getting info for 06-09-2020
 Getting info for 06-10-2020
 Getting info for 06-11-2020
+[master 75c0c28] Automatic daily update
+ 48 files changed, 1761 insertions(+), 1458 deletions(-)
+ create mode 100644 fetch-covid.app/Contents/Info.plist
+ create mode 100755 fetch-covid.app/Contents/MacOS/Application Stub
+ create mode 100644 fetch-covid.app/Contents/Resources/AutomatorApplet.icns
+ create mode 100644 fetch-covid.app/Contents/Resources/ar.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ca.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/cs.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/da.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/de.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/el.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/en.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/en_AU.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/en_GB.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/es.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/es_419.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/fi.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/fr.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/fr_CA.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/he.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/hi.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/hr.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/hu.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/id.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/it.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ja.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ko.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ms.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/nl.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/no.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/pl.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/pt.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/pt_PT.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ro.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/ru.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/sk.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/sv.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/th.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/tr.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/uk.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/vi.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/zh_CN.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/zh_HK.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/Resources/zh_TW.lproj/InfoPlist.strings
+ create mode 100644 fetch-covid.app/Contents/document.wflow
+ rewrite uploads/core/templates/core/plotfile.html (65%)
+ rewrite uploads/core/templates/core/plotmaricopa.html (65%)

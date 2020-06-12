@@ -23,6 +23,18 @@ def plotmaricopa(request): #this allows the code to render the plotfile.html fil
 def maricopa(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/maricopa.html')
 
+def salt_lake(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/salt_lake.html')
+
+def plotsalt_lake(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotsalt_lake.html')
+
+def utah(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/utah.html')
+
+def plotutah(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotutah.html')
+
 def harris(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/harris.html')
 
