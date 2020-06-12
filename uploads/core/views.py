@@ -35,6 +35,12 @@ def utah(request): #this allows the code to render the plotfile.html file
 def plotutah(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/plotutah.html')
 
+def plotsan_diego(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotsan_diego.html')
+
+def san_diego(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/san_diego.html')
+
 def harris(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/harris.html')
 

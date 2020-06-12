@@ -29,3 +29,9 @@ print("Salt Lake Co., UT")
 import get_data_salt_lake
 import plots_salt_lake
 
+#import san_diego modules
+sys.path.append('San_Diego/')
+print("San Diego Co., CA")
+import get_data_san_diego
+import plots_san_diego
+

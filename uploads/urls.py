@@ -16,7 +16,9 @@ urlpatterns = [
     url(r'^salt_lake', views.salt_lake, name='salt_lake'),
     url(r'^plotsalt_lake', views.plotsalt_lake, name='plotsalt_lake'),
     url(r'^utah', views.utah, name='utah'),
-    url(r'^plotutah', views.plotutah, name='plotutah')
+    url(r'^plotutah', views.plotutah, name='plotutah'),
+    url(r'^san_diego', views.san_diego, name='san_diego'),
+    url(r'^plotsan_diego', views.plotsan_diego, name='plotsan_diego')
 ]
 
 if settings.DEBUG:
