@@ -2,5 +2,5 @@
 
 /anaconda2/bin/python fetch.py
 git add *
-git commit -m "Automatic daily update"
+git commit -m "Automator auto-update"
 git push origin master
