@@ -95,6 +95,9 @@ for i in range(len(good_dates)):
 									  "Deaths": deaths[i], "Recovered": recovered[i],
 									  "Active": active[i]}, ignore_index=True)
 
+#Drop duplicates or it messes up plotting
+harris_data = harris_data.drop_duplicates()
+
 with pd.ExcelWriter("Harris_Data.xlsx") as writer:
 	harris_data.to_excel(writer, 'Harris Co., Texas')
 

@@ -121,5 +121,8 @@ for i in range(len(good_dates)):
 									  "Deaths": deaths[i], "Recovered": recovered[i],
 									  "Active": active[i]}, ignore_index=True)
 
+#Drop duplicates or it messes up plotting
+san_diego_data = san_diego_data.drop_duplicates()
+
 with pd.ExcelWriter("San_Diego_Data.xlsx") as writer:
 	san_diego_data.to_excel(writer, 'San Diego Co., CA')

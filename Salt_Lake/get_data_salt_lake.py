@@ -93,6 +93,8 @@ for i in range(len(good_dates)):
 	salt_lake_data = salt_lake_data.append({"Date": good_dates[i], "Confirmed": confirmed[i],
 									  "Deaths": deaths[i], "Recovered": recovered[i],
 									  "Active": active[i]}, ignore_index=True)
+#Drop duplicates or it messes up plotting
+salt_lake_data = salt_lake_data.drop_duplicates()
 
 with pd.ExcelWriter("Salt_Lake_Data.xlsx") as writer:
 	salt_lake_data.to_excel(writer, 'Salt Lake Co., UT')
