@@ -95,7 +95,7 @@ for i in range(len(good_dates)):
 									  "Active": active[i]}, ignore_index=True)
 
 #Drop duplicates or it messes up plotting
-utah_data = utah_data.drop_duplicates()
+utah_data = utah_data.drop_duplicates(subset="Date", ignore_index=True)
 
 with pd.ExcelWriter("Utah_Data.xlsx") as writer:
 	utah_data.to_excel(writer, 'Utah Co., UT')

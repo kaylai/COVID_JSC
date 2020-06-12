@@ -96,7 +96,7 @@ for i in range(len(good_dates)):
 									  "Active": active[i]}, ignore_index=True)
 
 #Drop duplicates or it messes up plotting
-harris_data = harris_data.drop_duplicates()
+harris_data = harris_data.drop_duplicates(subset="Date", ignore_index=True)
 
 with pd.ExcelWriter("Harris_Data.xlsx") as writer:
 	harris_data.to_excel(writer, 'Harris Co., Texas')

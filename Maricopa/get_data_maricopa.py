@@ -95,7 +95,7 @@ for i in range(len(good_dates)):
 									  "Active": active[i]}, ignore_index=True)
 
 #Drop duplicates or it messes up plotting
-maricopa_data = maricopa_data.drop_duplicates()
+maricopa_data = maricopa_data.drop_duplicates(subset="Date", ignore_index=True)
 
 with pd.ExcelWriter("Maricopa_Data.xlsx") as writer:
 	maricopa_data.to_excel(writer, 'Maricopa Co., AZ')
