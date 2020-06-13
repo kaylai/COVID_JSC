@@ -14,7 +14,7 @@ def moving_average(a, n=5) :
     return ret[n - 1:] / n
 
 #Pull in the data created by get_data.py
-salt_lake_data = pd.read_excel("salt_lake_Data.xlsx")
+salt_lake_data = pd.read_excel("Salt_Lake_Data.xlsx")
 salt_lake_data["Date"] = salt_lake_data["Date"].astype('datetime64[ns]')
 
 #Calculate daily totals instead of cumulative
