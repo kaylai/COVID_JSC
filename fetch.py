@@ -4,6 +4,9 @@
 This is our chron job file. This is what needs to auto-run to
 create new plots each day. 
 """
+from datetime import datetime
+todays_date = datetime.today().strftime('%m-%d-%Y')
+print(todays_date)
 
 #import harris modules
 print("Harris Co., TX")
