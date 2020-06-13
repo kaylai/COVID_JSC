@@ -1,11 +1,11 @@
 COVID_JSC
 =========
 
-A couple of quick scripts to plot up COVID-19 data in Harris County, Texas.
+A couple of quick scripts to plot up COVID-19 data in a handful of counties across the US.
 
 These plots are designed to emulate some of the data being used by Johnson Space Center to determine when more employees can return to work onsite. Two plots are generated: Daily confirmed cases and Cumulative confirmed cases. In both plots, bars represent daily values and lines represent a 5-day moving average. In the Daily confirmed cases plot, a red or green shaded box covering the previous 14 days of data indicates whether the trend of daily cases is positive (red) or negative (green).
 
-Eventually, these plots will be generated daily and pushed to a website.
+These plots autogenerate daily and can be accessed at http://covid-harris.herokuapp.com/
 
 Data Source
 -----------
