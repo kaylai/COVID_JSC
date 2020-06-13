@@ -126,7 +126,7 @@ For more information about using Python on Heroku, see these Dev Center articles
 
 ## David's setup notes (macOS)
 
-###In local Machine
+### In local Machine
 ```
 git clone https://github.com/kaylai/DensityX-heroku.git
 cd DensityX-heroku
@@ -137,7 +137,7 @@ source activate venv
 heroku local web
 ```
 
-###In Venv Machine
+### In Venv Machine
 ```
 pip install -r requirements.txt
 python manage.py collectstatic
@@ -145,6 +145,27 @@ yes
 [Switch to local machine]
 ```
 
+# Auto-updating and pushing to github
+1. Set a webook in heroku so that the heroku server builds and deploys everytime this github is updated
+2. Spin up a [DigitalOcean](https://www.digitalocean.com/) droplet running Ubuntu
+3. Install the necessary items, including [anaconda](https://www.anaconda.com/products/individual). wget "url" to download the installer .sh file, then follow the instructions [here](https://docs.anaconda.com/anaconda/install/linux/).
+4. git clone your github repo into your root folder on the DO server
+5. You'll need to store your github credentials so that the DO terminal doesn't ask for a username/pass every time you try to git push. See this [stackexchange](https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-in-git-gitextension) discussion. 
+5. Create a cron job to automatically git pull, run fetch.py, git add, git commit, and git push. Also add the output of these commands to log files so that you can debug
+
+## Setting up the cron job
+Cron runs in a lightweight environment, so you need to tell it to run in bash or some shell, and you need to provide absolute paths to everything. To edit your crontab, type:
+
+```
+crontab -e
+```
+
+Then, add this to the first line of your crontab
+```
+01 00 * * * su -s /bin/sh root -c 'cd /root/COVID_JSC && /usr/bin/git pull origin master && /root/anaconda3/bin/python fetch.py | /usr/bin/tee /root/fetchlog.log && /usr/bin/git add * | /usr/bin/tee /root/addstar.log && /usr/bin/git commit -m "Cron autoupdate" | /usr/bin/tee /root/commitlog.log && /usr/bin/git push -u origin master >> /root/gitpushlog.log 2>&1'
+```
+
+This tells cron to run this command on the first minute of the 0th hour (midnight) every day of month, every day, every day of week. The `su -s` executes as a super user. The logs get saved into the root folder of the DO server, so you'll have to log into the DO terminal to see them.
 
 ## Authors
 
