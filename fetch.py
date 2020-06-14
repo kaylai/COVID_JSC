@@ -38,3 +38,9 @@ print("San Diego Co., CA")
 import get_data_san_diego
 import plots_san_diego
 
+#import clark modules
+sys.path.append('Clark/')
+print("Clark Co., NV")
+import get_data_clark
+import plots_clark
+

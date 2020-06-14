@@ -41,6 +41,18 @@ def plotsan_diego(request): #this allows the code to render the plotfile.html fi
 def san_diego(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/san_diego.html')
 
+def plotclark(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotclark.html')
+
+def clark(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/clark.html')
+
+def plotpercapita(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotpercapita.html')
+
+def percapita(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/percapita.html')
+
 def harris(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/harris.html')
 

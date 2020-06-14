@@ -18,7 +18,11 @@ urlpatterns = [
     url(r'^utah', views.utah, name='utah'),
     url(r'^plotutah', views.plotutah, name='plotutah'),
     url(r'^san_diego', views.san_diego, name='san_diego'),
-    url(r'^plotsan_diego', views.plotsan_diego, name='plotsan_diego')
+    url(r'^plotsan_diego', views.plotsan_diego, name='plotsan_diego'),
+    url(r'^clark', views.clark, name='clark'),
+    url(r'^plotclark', views.plotclark, name='plotclark'),
+    url(r'^percapita', views.percapita, name='percapita'),
+    url(r'^plotpercapita', views.plotpercapita, name='plotpercapita')
 ]
 
 if settings.DEBUG:
