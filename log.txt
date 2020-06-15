@@ -1,14 +1,17 @@
+06-15-2020 13:30:16
 Harris Co., TX
+Getting info for 06-14-2020
 Maricopa Co., AZ
+Getting info for 06-14-2020
 Utah Co., UT
 Salt Lake Co., UT
+Getting info for 06-14-2020
 San Diego Co., CA
-[master 441b82f] Automator auto-update
- 16 files changed, 1475 insertions(+), 1475 deletions(-)
- rewrite Harris_Data.xlsx (64%)
- rewrite Maricopa_Data.xlsx (65%)
- rewrite Salt_Lake_Data.xlsx (67%)
- rewrite San_Diego_Data.xlsx (78%)
- rewrite Utah_Data.xlsx (69%)
- rewrite uploads/core/templates/core/plotsalt_lake.html (83%)
- rewrite uploads/core/templates/core/plotsan_diego.html (77%)
+Getting info for 06-14-2020
+Getting info for 06-14-2020
+Clark Co., NV
+Getting info for 06-14-2020
+Travis Co., TX
+Getting info for 06-14-2020
+Westchester Co., NY
+Getting info for 06-14-2020
