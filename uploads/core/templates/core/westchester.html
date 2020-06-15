@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% csrf_token %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h1 name="DOCS">Westchester Co., NY</h1>
+            <P><iframe src="plotwestchester.html", width="1200", height="1200"></iframe>
+            <hr>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

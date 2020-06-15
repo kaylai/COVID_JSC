@@ -34,8 +34,17 @@ clark_data = pd.read_excel("Clark_Data.xlsx")
 clark_data["Date"] = clark_data["Date"].astype('datetime64[ns]')
 clark_dates = clark_data["Date"].tolist()
 
+travis_data = pd.read_excel("Travis_Data.xlsx")
+travis_data["Date"] = travis_data["Date"].astype('datetime64[ns]')
+travis_dates = travis_data["Date"].tolist()
+
+westchester_data = pd.read_excel("Westchester_Data.xlsx")
+westchester_data["Date"] = westchester_data["Date"].astype('datetime64[ns]')
+westchester_dates = westchester_data["Date"].tolist()
+
 county_dict = {'harris': harris_data, 'maricopa': maricopa_data, 'san_diego': san_diego_data, 
-		       'salt_lake': salt_lake_data, 'utah': utah_data, 'clark': clark_data}
+		       'salt_lake': salt_lake_data, 'utah': utah_data, 'clark': clark_data,
+		       'travis': travis_data, 'westchester': westchester_data}
 
 """
 Population Source
@@ -47,7 +56,8 @@ The American Community Survey (ACS) period estimates are based on a rolling samp
 Source: American Community Survey (ACS)
 """
 population_dict = {'harris': 4602523, 'maricopa': 4253913, 'san_diego': 3302833, 
-				   'salt_lake': 1120805, 'utah': 590440, 'clark': 2141574}
+				   'salt_lake': 1120805, 'utah': 590440, 'clark': 2141574,
+				   'travis': 1203166, 'westchester': 968815}
 
 #Calculate cumulative totals as a percentage of the total population
 for county, data in county_dict.items():
@@ -63,6 +73,8 @@ san_diego_line = ax.plot(san_diego_dates, san_diego_data["PerCapita"], '-', mark
 salt_lake_line = ax.plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
 utah_line = ax.plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
 clark_line = ax.plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
+travis_line = ax.plot(travis_dates, travis_data["PerCapita"], '-', marker='o', label="Travis County, TX")
+westchester_line = ax.plot(westchester_dates, westchester_data["PerCapita"], '-', marker='o', label="Westchester County, NY")
 
 ax.set_xlabel('Date')
 ax.set_ylabel('Cumulative COVID-19 Cases Per 100 People')
@@ -76,6 +88,8 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(san_diego_line[0],lab
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(salt_lake_line[0],labels=salt_lake_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(utah_line[0],labels=utah_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(clark_line[0],labels=clark_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels=travis_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(westchester_line[0],labels=westchester_data["PerCapita"].tolist()))
 
 mpld3.save_html(fig, "uploads/core/templates/core/plotpercapita.html")
 

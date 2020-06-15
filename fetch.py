@@ -44,3 +44,15 @@ print("Clark Co., NV")
 import get_data_clark
 import plots_clark
 
+#import travis modules
+sys.path.append('Travis/')
+print("Travis Co., TX")
+import get_data_travis
+import plots_travis
+
+#import travis modules
+sys.path.append('Westchester/')
+print("Westchester Co., NY")
+import get_data_westchester
+import plots_westchester
+

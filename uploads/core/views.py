@@ -47,6 +47,18 @@ def plotclark(request): #this allows the code to render the plotfile.html file
 def clark(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/clark.html')
 
+def plottravis(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plottravis.html')
+
+def travis(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/travis.html')
+
+def plotwestchester(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotwestchester.html')
+
+def westchester(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/westchester.html')
+
 def plotpercapita(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/plotpercapita.html')
 

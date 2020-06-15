@@ -47,10 +47,10 @@ for i in range(len(last_14_days)):
 	if i>0:
 		trend.append(last_14_days[i] - last_14_days[i-1])
 
-if sum(last_14_days) > 0:
+if sum(trend) > 0:
 	trend_color = '#faafaf'
-elif sum(last_14_days) <= 0:
-	trend_color = 'mediumseagreen'
+elif sum(trend) <= 0:
+	trend_color = '#affaaf'
 
 
 #calculate the simple moving average with a window size of 5
