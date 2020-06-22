@@ -8,9 +8,6 @@ from datetime import datetime
 todays_date = datetime.today().strftime('%m-%d-%Y %H:%M:%S')
 print(todays_date)
 
-#import per capita modeul
-import percapita
-
 #import harris modules
 print("Harris Co., TX")
 import get_data
@@ -64,4 +61,7 @@ sys.path.append('Los_Angeles/')
 print("Los Angeles Co., CA")
 import get_data_los_angeles
 import plots_los_angeles
+
+#import per capita modeul
+import percapita
 

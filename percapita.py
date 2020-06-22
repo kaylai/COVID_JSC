@@ -42,9 +42,13 @@ westchester_data = pd.read_excel("Westchester_Data.xlsx")
 westchester_data["Date"] = westchester_data["Date"].astype('datetime64[ns]')
 westchester_dates = westchester_data["Date"].tolist()
 
+los_angeles_data = pd.read_excel("Los_Angeles_Data.xlsx")
+los_angeles_data["Date"] = los_angeles_data["Date"].astype('datetime64[ns]')
+los_angeles_dates = los_angeles_data["Date"].tolist()
+
 county_dict = {'harris': harris_data, 'maricopa': maricopa_data, 'san_diego': san_diego_data, 
 		       'salt_lake': salt_lake_data, 'utah': utah_data, 'clark': clark_data,
-		       'travis': travis_data, 'westchester': westchester_data}
+		       'travis': travis_data, 'westchester': westchester_data, 'los_angeles': los_angeles_data}
 
 """
 Population Source
@@ -57,7 +61,7 @@ Source: American Community Survey (ACS)
 """
 population_dict = {'harris': 4602523, 'maricopa': 4253913, 'san_diego': 3302833, 
 				   'salt_lake': 1120805, 'utah': 590440, 'clark': 2141574,
-				   'travis': 1203166, 'westchester': 968815}
+				   'travis': 1203166, 'westchester': 968815, 'los_angeles': 10098052}
 
 #Calculate cumulative totals as a percentage of the total population
 for county, data in county_dict.items():
@@ -69,11 +73,12 @@ for county, data in county_dict.items():
 fig, ax = plt.subplots(1, figsize=(10,5))
 harris_line = ax.plot(harris_datetimes, harris_data["PerCapita"], '-', marker='o', label="Harris County, TX")
 maricopa_line = ax.plot(maricopa_datetimes, maricopa_data["PerCapita"], '-', marker='o', label="Maricopa County, AZ")
+travis_line = ax.plot(travis_dates, travis_data["PerCapita"], '-', marker='o', label="Travis County, TX")
 san_diego_line = ax.plot(san_diego_dates, san_diego_data["PerCapita"], '-', marker='o', label="San Diego County, CA")
+los_angeles_line = ax.plot(los_angeles_dates, los_angeles_data["PerCapita"], '-', marker='o', label="Los Angeles County, CA")
+clark_line = ax.plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
 salt_lake_line = ax.plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
 utah_line = ax.plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
-clark_line = ax.plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
-travis_line = ax.plot(travis_dates, travis_data["PerCapita"], '-', marker='o', label="Travis County, TX")
 westchester_line = ax.plot(westchester_dates, westchester_data["PerCapita"], '-', marker='o', label="Westchester County, NY")
 
 ax.set_xlabel('Date')
@@ -90,6 +95,7 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(utah_line[0],labels=u
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(clark_line[0],labels=clark_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels=travis_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(westchester_line[0],labels=westchester_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],labels=los_angeles_data["PerCapita"].tolist()))
 
 mpld3.save_html(fig, "uploads/core/templates/core/plotpercapita.html")
 
