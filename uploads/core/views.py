@@ -56,6 +56,12 @@ def travis(request): #this allows the code to render the plotfile.html file
 def plotwestchester(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/plotwestchester.html')
 
+def los_angeles(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/los_angeles.html')
+
+def plotlos_angeles(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotlos_angeles.html')
+
 def westchester(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/westchester.html')
 

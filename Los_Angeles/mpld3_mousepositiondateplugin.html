@@ -1,0 +1,142 @@
+
+
+<style>
+
+</style>
+
+<div id="fig_el1056948552243362344946845"></div>
+<script>
+function mpld3_load_lib(url, callback){
+  var s = document.createElement('script');
+  s.src = url;
+  s.async = true;
+  s.onreadystatechange = s.onload = callback;
+  s.onerror = function(){console.warn("failed to load library " + url);};
+  document.getElementsByTagName("head")[0].appendChild(s);
+}
+
+if(typeof(mpld3) !== "undefined" && mpld3._mpld3IsLoaded){
+   // already loaded: just create the figure
+   !function(mpld3){
+       
+    mpld3.register_plugin("mousepositiondate", MousePositionDatePlugin);
+    MousePositionDatePlugin.prototype = Object.create(mpld3.Plugin.prototype);
+    MousePositionDatePlugin.prototype.constructor = MousePositionDatePlugin;
+    MousePositionDatePlugin.prototype.requiredProps = [];
+    MousePositionDatePlugin.prototype.defaultProps = {
+    fontsize: 12,
+    xfmt: "%Y-%m-%d %H:%M:%S",
+    yfmt: ".3g"
+    };
+    function MousePositionDatePlugin(fig, props) {
+    mpld3.Plugin.call(this, fig, props);
+    }
+    MousePositionDatePlugin.prototype.draw = function() {
+    var fig = this.fig;
+    var xfmt = d3.time.format(this.props.xfmt);
+    var yfmt = d3.format(this.props.yfmt);
+    var coords = fig.canvas.append("text").attr("class", "mpld3-coordinates").style("text-anchor", "end").style("font-size", this.props.fontsize).attr("x", this.fig.width - 5).attr("y", this.fig.height - 5);
+    for (var i = 0; i < this.fig.axes.length; i++) {
+      var update_coords = function() {
+        var ax = fig.axes[i];
+        return function() {
+          var pos = d3.mouse(this);
+          x = ax.xdom.invert(pos[0]);
+          y = ax.ydom.invert(pos[1]);
+          coords.text("(" + xfmt(x) + ", " + yfmt(y) + ")");
+        };
+      }();
+      fig.axes[i].baseaxes.on("mousemove", update_coords).on("mouseout", function() {
+        coords.text("");
+      });
+    }
+    };
+    
+       mpld3.draw_figure("fig_el1056948552243362344946845", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [735850.85, 735854.15], "ylim": [1.7, 8.3], "xdomain": [[2015, 8, 9, 20, 24, 0, 0.0], [2015, 8, 13, 3, 36, 0, 0.0]], "ydomain": [1.7, 8.3], "xscale": "date", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el105694842357584", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512pts", "facecolor": "none", "edgecolor": "#1F77B4", "edgewidth": 1.0, "alpha": 1, "zorder": 2, "markerpath": [[[0.0, 3.0], [0.7956093000000001, 3.0], [1.5587396123545605, 2.683901074764725], [2.121320343559643, 2.121320343559643], [2.683901074764725, 1.5587396123545605], [3.0, 0.7956093000000001], [3.0, 0.0], [3.0, -0.7956093000000001], [2.683901074764725, -1.5587396123545605], [2.121320343559643, -2.121320343559643], [1.5587396123545605, -2.683901074764725], [0.7956093000000001, -3.0], [0.0, -3.0], [-0.7956093000000001, -3.0], [-1.5587396123545605, -2.683901074764725], [-2.121320343559643, -2.121320343559643], [-2.683901074764725, -1.5587396123545605], [-3.0, -0.7956093000000001], [-3.0, 0.0], [-3.0, 0.7956093000000001], [-2.683901074764725, 1.5587396123545605], [-2.121320343559643, 2.121320343559643], [-1.5587396123545605, 2.683901074764725], [-0.7956093000000001, 3.0], [0.0, 3.0]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]}], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[735851.0, 2.0], [735852.0, 4.0], [735853.0, 6.0], [735854.0, 8.0]]}, "id": "el105694855224336", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "mousepositiondate", "fontsize": 14, "xfmt": "%Y-%m-%d %H:%M:%S", "yfmt": ".3g"}]});
+   }(mpld3);
+}else if(typeof define === "function" && define.amd){
+   // require.js is available: use it to load d3/mpld3
+   require.config({paths: {d3: "https://mpld3.github.io/js/d3.v3.min"}});
+   require(["d3"], function(d3){
+      window.d3 = d3;
+      mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.3.js", function(){
+         
+    mpld3.register_plugin("mousepositiondate", MousePositionDatePlugin);
+    MousePositionDatePlugin.prototype = Object.create(mpld3.Plugin.prototype);
+    MousePositionDatePlugin.prototype.constructor = MousePositionDatePlugin;
+    MousePositionDatePlugin.prototype.requiredProps = [];
+    MousePositionDatePlugin.prototype.defaultProps = {
+    fontsize: 12,
+    xfmt: "%Y-%m-%d %H:%M:%S",
+    yfmt: ".3g"
+    };
+    function MousePositionDatePlugin(fig, props) {
+    mpld3.Plugin.call(this, fig, props);
+    }
+    MousePositionDatePlugin.prototype.draw = function() {
+    var fig = this.fig;
+    var xfmt = d3.time.format(this.props.xfmt);
+    var yfmt = d3.format(this.props.yfmt);
+    var coords = fig.canvas.append("text").attr("class", "mpld3-coordinates").style("text-anchor", "end").style("font-size", this.props.fontsize).attr("x", this.fig.width - 5).attr("y", this.fig.height - 5);
+    for (var i = 0; i < this.fig.axes.length; i++) {
+      var update_coords = function() {
+        var ax = fig.axes[i];
+        return function() {
+          var pos = d3.mouse(this);
+          x = ax.xdom.invert(pos[0]);
+          y = ax.ydom.invert(pos[1]);
+          coords.text("(" + xfmt(x) + ", " + yfmt(y) + ")");
+        };
+      }();
+      fig.axes[i].baseaxes.on("mousemove", update_coords).on("mouseout", function() {
+        coords.text("");
+      });
+    }
+    };
+    
+         mpld3.draw_figure("fig_el1056948552243362344946845", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [735850.85, 735854.15], "ylim": [1.7, 8.3], "xdomain": [[2015, 8, 9, 20, 24, 0, 0.0], [2015, 8, 13, 3, 36, 0, 0.0]], "ydomain": [1.7, 8.3], "xscale": "date", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el105694842357584", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512pts", "facecolor": "none", "edgecolor": "#1F77B4", "edgewidth": 1.0, "alpha": 1, "zorder": 2, "markerpath": [[[0.0, 3.0], [0.7956093000000001, 3.0], [1.5587396123545605, 2.683901074764725], [2.121320343559643, 2.121320343559643], [2.683901074764725, 1.5587396123545605], [3.0, 0.7956093000000001], [3.0, 0.0], [3.0, -0.7956093000000001], [2.683901074764725, -1.5587396123545605], [2.121320343559643, -2.121320343559643], [1.5587396123545605, -2.683901074764725], [0.7956093000000001, -3.0], [0.0, -3.0], [-0.7956093000000001, -3.0], [-1.5587396123545605, -2.683901074764725], [-2.121320343559643, -2.121320343559643], [-2.683901074764725, -1.5587396123545605], [-3.0, -0.7956093000000001], [-3.0, 0.0], [-3.0, 0.7956093000000001], [-2.683901074764725, 1.5587396123545605], [-2.121320343559643, 2.121320343559643], [-1.5587396123545605, 2.683901074764725], [-0.7956093000000001, 3.0], [0.0, 3.0]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]}], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[735851.0, 2.0], [735852.0, 4.0], [735853.0, 6.0], [735854.0, 8.0]]}, "id": "el105694855224336", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "mousepositiondate", "fontsize": 14, "xfmt": "%Y-%m-%d %H:%M:%S", "yfmt": ".3g"}]});
+      });
+    });
+}else{
+    // require.js not available: dynamically load d3 & mpld3
+    mpld3_load_lib("https://mpld3.github.io/js/d3.v3.min.js", function(){
+         mpld3_load_lib("https://mpld3.github.io/js/mpld3.v0.3.js", function(){
+                 
+    mpld3.register_plugin("mousepositiondate", MousePositionDatePlugin);
+    MousePositionDatePlugin.prototype = Object.create(mpld3.Plugin.prototype);
+    MousePositionDatePlugin.prototype.constructor = MousePositionDatePlugin;
+    MousePositionDatePlugin.prototype.requiredProps = [];
+    MousePositionDatePlugin.prototype.defaultProps = {
+    fontsize: 12,
+    xfmt: "%Y-%m-%d %H:%M:%S",
+    yfmt: ".3g"
+    };
+    function MousePositionDatePlugin(fig, props) {
+    mpld3.Plugin.call(this, fig, props);
+    }
+    MousePositionDatePlugin.prototype.draw = function() {
+    var fig = this.fig;
+    var xfmt = d3.time.format(this.props.xfmt);
+    var yfmt = d3.format(this.props.yfmt);
+    var coords = fig.canvas.append("text").attr("class", "mpld3-coordinates").style("text-anchor", "end").style("font-size", this.props.fontsize).attr("x", this.fig.width - 5).attr("y", this.fig.height - 5);
+    for (var i = 0; i < this.fig.axes.length; i++) {
+      var update_coords = function() {
+        var ax = fig.axes[i];
+        return function() {
+          var pos = d3.mouse(this);
+          x = ax.xdom.invert(pos[0]);
+          y = ax.ydom.invert(pos[1]);
+          coords.text("(" + xfmt(x) + ", " + yfmt(y) + ")");
+        };
+      }();
+      fig.axes[i].baseaxes.on("mousemove", update_coords).on("mouseout", function() {
+        coords.text("");
+      });
+    }
+    };
+    
+                 mpld3.draw_figure("fig_el1056948552243362344946845", {"width": 640.0, "height": 480.0, "axes": [{"bbox": [0.125, 0.10999999999999999, 0.775, 0.77], "xlim": [735850.85, 735854.15], "ylim": [1.7, 8.3], "xdomain": [[2015, 8, 9, 20, 24, 0, 0.0], [2015, 8, 13, 3, 36, 0, 0.0]], "ydomain": [1.7, 8.3], "xscale": "date", "yscale": "linear", "axes": [{"position": "bottom", "nticks": 7, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}, {"position": "left", "nticks": 9, "tickvalues": null, "tickformat": null, "scale": "linear", "fontsize": 10.0, "grid": {"gridOn": false}, "visible": true}], "axesbg": "#FFFFFF", "axesbgalpha": null, "zoomable": true, "id": "el105694842357584", "lines": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512", "color": "#1F77B4", "linewidth": 1.5, "dasharray": "none", "alpha": 1, "zorder": 2, "drawstyle": "default"}], "paths": [], "markers": [{"data": "data01", "xindex": 0, "yindex": 1, "coordinates": "data", "id": "el105694848410512pts", "facecolor": "none", "edgecolor": "#1F77B4", "edgewidth": 1.0, "alpha": 1, "zorder": 2, "markerpath": [[[0.0, 3.0], [0.7956093000000001, 3.0], [1.5587396123545605, 2.683901074764725], [2.121320343559643, 2.121320343559643], [2.683901074764725, 1.5587396123545605], [3.0, 0.7956093000000001], [3.0, 0.0], [3.0, -0.7956093000000001], [2.683901074764725, -1.5587396123545605], [2.121320343559643, -2.121320343559643], [1.5587396123545605, -2.683901074764725], [0.7956093000000001, -3.0], [0.0, -3.0], [-0.7956093000000001, -3.0], [-1.5587396123545605, -2.683901074764725], [-2.121320343559643, -2.121320343559643], [-2.683901074764725, -1.5587396123545605], [-3.0, -0.7956093000000001], [-3.0, 0.0], [-3.0, 0.7956093000000001], [-2.683901074764725, 1.5587396123545605], [-2.121320343559643, 2.121320343559643], [-1.5587396123545605, 2.683901074764725], [-0.7956093000000001, 3.0], [0.0, 3.0]], ["M", "C", "C", "C", "C", "C", "C", "C", "C", "Z"]]}], "texts": [], "collections": [], "images": [], "sharex": [], "sharey": []}], "data": {"data01": [[735851.0, 2.0], [735852.0, 4.0], [735853.0, 6.0], [735854.0, 8.0]]}, "id": "el105694855224336", "plugins": [{"type": "reset"}, {"type": "zoom", "button": true, "enabled": false}, {"type": "boxzoom", "button": true, "enabled": false}, {"type": "mousepositiondate", "fontsize": 14, "xfmt": "%Y-%m-%d %H:%M:%S", "yfmt": ".3g"}]});
+            })
+         });
+}
+</script>
