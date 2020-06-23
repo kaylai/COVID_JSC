@@ -1,33 +1,20 @@
-06-18-2020 14:23:27
+06-23-2020 14:30:57
 Harris Co., TX
-Getting info for 06-17-2020
+Getting info for 06-22-2020
 Maricopa Co., AZ
-Getting info for 06-17-2020
+Getting info for 06-22-2020
 Utah Co., UT
+Getting info for 06-22-2020
 Salt Lake Co., UT
-Getting info for 06-17-2020
+Getting info for 06-22-2020
 San Diego Co., CA
-Getting info for 06-17-2020
-Getting info for 06-17-2020
+Getting info for 06-22-2020
+Getting info for 06-22-2020
 Clark Co., NV
-Getting info for 06-17-2020
+Getting info for 06-22-2020
 Travis Co., TX
-Getting info for 06-17-2020
+Getting info for 06-22-2020
 Westchester Co., NY
-Getting info for 06-17-2020
-[master 4abdd07] Automator auto-update
- 18 files changed, 3668 insertions(+), 3676 deletions(-)
- rewrite Clark_Data.xlsx (64%)
- rewrite Harris_Data.xlsx (75%)
- rewrite Maricopa_Data.xlsx (74%)
- rewrite Salt_Lake_Data.xlsx (75%)
- rewrite San_Diego_Data.xlsx (77%)
- rewrite Travis_Data.xlsx (61%)
- rewrite Utah_Data.xlsx (76%)
- rewrite Westchester_Data.xlsx (65%)
- rewrite log.txt (78%)
- rewrite uploads/core/templates/core/plotclark.html (72%)
- rewrite uploads/core/templates/core/plotmaricopa.html (67%)
- rewrite uploads/core/templates/core/plotsalt_lake.html (62%)
- rewrite uploads/core/templates/core/plotsan_diego.html (68%)
- rewrite uploads/core/templates/core/plotwestchester.html (64%)
+Getting info for 06-22-2020
+Los Angeles Co., CA
+Getting info for 06-22-2020
