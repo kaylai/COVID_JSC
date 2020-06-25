@@ -45,7 +45,10 @@ last_14_days_datetimes = datetime_list[(fourteen_days_index - len(daily_confirme
 trend = [0]
 for i in range(len(last_14_days)):
 	if i>0:
-		trend.append(last_14_days[i] - last_14_days[i-1])
+		if last_14_days[i] == 0:
+			pass
+		else:
+			trend.append(last_14_days[i] - last_14_days[i-1])
 
 if sum(trend) > 0:
 	trend_color = '#faafaf'

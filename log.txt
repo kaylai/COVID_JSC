@@ -18,3 +18,25 @@ Westchester Co., NY
 Getting info for 06-22-2020
 Los Angeles Co., CA
 Getting info for 06-22-2020
+[master 0e282a0] Automator auto-update
+ 21 files changed, 6610 insertions(+), 6623 deletions(-)
+ rewrite Clark_Data.xlsx (71%)
+ rewrite Harris_Data.xlsx (78%)
+ rewrite Los_Angeles_Data.xlsx (65%)
+ rewrite Maricopa_Data.xlsx (76%)
+ rewrite Salt_Lake_Data.xlsx (78%)
+ rewrite San_Diego_Data.xlsx (79%)
+ rewrite Travis_Data.xlsx (69%)
+ rewrite Utah_Data.xlsx (61%)
+ rewrite Westchester_Data.xlsx (70%)
+ rewrite log.txt (87%)
+ rewrite uploads/core/templates/core/plotclark.html (68%)
+ rewrite uploads/core/templates/core/plotfile.html (66%)
+ rewrite uploads/core/templates/core/plotlos_angeles.html (66%)
+ rewrite uploads/core/templates/core/plotmaricopa.html (66%)
+ rewrite uploads/core/templates/core/plotpercapita.html (96%)
+ rewrite uploads/core/templates/core/plotsalt_lake.html (65%)
+ rewrite uploads/core/templates/core/plotsan_diego.html (68%)
+ rewrite uploads/core/templates/core/plottravis.html (68%)
+ rewrite uploads/core/templates/core/plotutah.html (66%)
+ rewrite uploads/core/templates/core/plotwestchester.html (66%)
