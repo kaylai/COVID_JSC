@@ -6,6 +6,7 @@ import matplotlib.dates as mdates
 from mpld3 import plugins, utils
 from datetime import datetime, timedelta
 import custom_plugins as mplm
+from scipy.stats import linregress
 
 #define function to calculate a 5-day moving average
 def moving_average(a, n=5) :
@@ -53,6 +54,14 @@ for i in range(len(last_14_days)):
 if sum(trend) > 0:
 	trend_color = '#faafaf'
 elif sum(trend) <= 0:
+	trend_color = '#affaaf'
+
+x_vals = [i for i in range(len(last_14_days))]
+slope, intercept, r_value, p_value, std_err = linregress(x_vals, last_14_days)
+
+if slope > 0:
+	trend_color = '#faafaf'
+elif slope <= 0:
 	trend_color = '#affaaf'
 
 
