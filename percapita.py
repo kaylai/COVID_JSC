@@ -109,7 +109,7 @@ utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], '-', marker='o', labe
 
 ax[1].set_xlabel('Date')
 ax[1].set_ylabel('Cumulative COVID-19 Cases Per 100 People')
-ax[1].set_title('Cumulative Percentage of Population That Has Been Infected With COVID-19 (Without Westchester')
+ax[1].set_title('Cumulative Percentage of Population That Has Been Infected With COVID-19 (Without Westchester)')
 ax[1].legend()
 
 
