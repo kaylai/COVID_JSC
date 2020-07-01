@@ -11,11 +11,6 @@ Data Source
 -----------
 All data used here are from the Johns Hopkins Whiting School of Engineering Center for Systems Science and Engineering. https://github.com/CSSEGISandData/COVID-19/tree/master/csse_covid_19_data/csse_covid_19_daily_reports
 
-Force git pull
---------------
-git fetch --all
-git reset --hard origin/master
-
 # Heroku testing and deployment
 
 This app was created on top of python-getting-started. The readme for the original infrastructure is below.
