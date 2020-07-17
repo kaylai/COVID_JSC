@@ -62,6 +62,12 @@ def los_angeles(request): #this allows the code to render the plotfile.html file
 def plotlos_angeles(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/plotlos_angeles.html')
 
+def miamidade(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/miamidade.html')
+
+def plotmiamidade(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotmiamidade.html')
+
 def westchester(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/westchester.html')
 

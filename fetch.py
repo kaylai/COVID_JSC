@@ -62,6 +62,12 @@ print("Los Angeles Co., CA")
 import get_data_los_angeles
 import plots_los_angeles
 
+#import miamidade modules
+sys.path.append('MiamiDade/')
+print("Miami-Dade Co., FL")
+import get_data_miamidade
+import plots_miamidade
+
 #import per capita modeul
 import percapita
 

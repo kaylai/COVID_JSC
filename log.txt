@@ -28,3 +28,24 @@ Getting info for 07-15-2020
 Los Angeles Co., CA
 Getting info for 07-14-2020
 Getting info for 07-15-2020
+[master 182363a] Automator auto-update
+ 21 files changed, 6611 insertions(+), 6591 deletions(-)
+ rewrite Clark_Data.xlsx (78%)
+ rewrite Harris_Data.xlsx (79%)
+ rewrite Los_Angeles_Data.xlsx (74%)
+ rewrite Maricopa_Data.xlsx (78%)
+ rewrite Salt_Lake_Data.xlsx (82%)
+ rewrite San_Diego_Data.xlsx (86%)
+ rewrite Travis_Data.xlsx (76%)
+ rewrite Utah_Data.xlsx (70%)
+ rewrite Westchester_Data.xlsx (77%)
+ rewrite uploads/core/templates/core/plotclark.html (68%)
+ rewrite uploads/core/templates/core/plotfile.html (67%)
+ rewrite uploads/core/templates/core/plotlos_angeles.html (64%)
+ rewrite uploads/core/templates/core/plotmaricopa.html (64%)
+ rewrite uploads/core/templates/core/plotpercapita.html (62%)
+ rewrite uploads/core/templates/core/plotsalt_lake.html (68%)
+ rewrite uploads/core/templates/core/plotsan_diego.html (72%)
+ rewrite uploads/core/templates/core/plottravis.html (68%)
+ rewrite uploads/core/templates/core/plotutah.html (66%)
+ rewrite uploads/core/templates/core/plotwestchester.html (66%)

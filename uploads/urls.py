@@ -27,6 +27,8 @@ urlpatterns = [
     url(r'^plotwestchester', views.plotwestchester, name='plotwestchester'),
     url(r'^los_angeles', views.los_angeles, name='los_angeles'),
     url(r'^plotlos_angeles', views.plotlos_angeles, name='plotlos_angeles'),
+    url(r'^miamidade', views.miamidade, name='miamidade'),
+    url(r'^plotmiamidade', views.plotmiamidade, name='plotmiamidade'),
     url(r'^percapita', views.percapita, name='percapita'),
     url(r'^plotpercapita', views.plotpercapita, name='plotpercapita')
 ]

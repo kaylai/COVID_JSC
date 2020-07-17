@@ -46,9 +46,14 @@ los_angeles_data = pd.read_excel("Los_Angeles_Data.xlsx")
 los_angeles_data["Date"] = los_angeles_data["Date"].astype('datetime64[ns]')
 los_angeles_dates = los_angeles_data["Date"].tolist()
 
+miamidade_data = pd.read_excel("MiamiDade_Data.xlsx")
+miamidade_data["Date"] = miamidade_data["Date"].astype('datetime64[ns]')
+miamidade_dates = miamidade_data["Date"].tolist()
+
 county_dict = {'harris': harris_data, 'maricopa': maricopa_data, 'san_diego': san_diego_data, 
 		       'salt_lake': salt_lake_data, 'utah': utah_data, 'clark': clark_data,
-		       'travis': travis_data, 'westchester': westchester_data, 'los_angeles': los_angeles_data}
+		       'travis': travis_data, 'westchester': westchester_data, 'los_angeles': los_angeles_data,
+		       'miamidade': miamidade_data}
 
 """
 Population Source
@@ -61,7 +66,8 @@ Source: American Community Survey (ACS)
 """
 population_dict = {'harris': 4602523, 'maricopa': 4253913, 'san_diego': 3302833, 
 				   'salt_lake': 1120805, 'utah': 590440, 'clark': 2141574,
-				   'travis': 1203166, 'westchester': 968815, 'los_angeles': 10098052}
+				   'travis': 1203166, 'westchester': 968815, 'los_angeles': 10098052,
+				   'miamidade': 2715516}
 
 #Calculate cumulative totals as a percentage of the total population
 for county, data in county_dict.items():
@@ -79,6 +85,7 @@ los_angeles_line = ax[0].plot(los_angeles_dates, los_angeles_data["PerCapita"], 
 clark_line = ax[0].plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
 salt_lake_line = ax[0].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
 utah_line = ax[0].plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
+miamidade_line = ax[0].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='o', label="Miami-Dade County, FL")
 westchester_line = ax[0].plot(westchester_dates, westchester_data["PerCapita"], '-', marker='o', label="Westchester County, NY")
 
 ax[0].set_xlabel('Date')
@@ -96,6 +103,7 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(clark_line[0],labels=
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels=travis_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(westchester_line[0],labels=westchester_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],labels=los_angeles_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(miamidade_line[0],labels=miamidade_data["PerCapita"].tolist()))
 
 #PLOT A SECOND FIGURE
 harris_line = ax[1].plot(harris_datetimes, harris_data["PerCapita"], '-', marker='o', label="Harris County, TX")
@@ -106,6 +114,7 @@ los_angeles_line = ax[1].plot(los_angeles_dates, los_angeles_data["PerCapita"], 
 clark_line = ax[1].plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
 salt_lake_line = ax[1].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
 utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
+miamidade_line = ax[1].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='o', label="Miami-Dade County, FL")
 
 ax[1].set_xlabel('Date')
 ax[1].set_ylabel('Cumulative COVID-19 Cases Per 100 People')
@@ -121,6 +130,7 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(utah_line[0],labels=u
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(clark_line[0],labels=clark_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels=travis_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],labels=los_angeles_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(miamidade_line[0],labels=miamidade_data["PerCapita"].tolist()))
 
 mpld3.save_html(fig, "uploads/core/templates/core/plotpercapita.html")
 
