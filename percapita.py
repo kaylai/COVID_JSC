@@ -106,19 +106,21 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],l
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(miamidade_line[0],labels=miamidade_data["PerCapita"].tolist()))
 
 #PLOT A SECOND FIGURE
-harris_line = ax[1].plot(harris_datetimes, harris_data["PerCapita"], '-', marker='o', label="Harris County, TX")
-maricopa_line = ax[1].plot(maricopa_datetimes, maricopa_data["PerCapita"], '-', marker='o', label="Maricopa County, AZ")
-travis_line = ax[1].plot(travis_dates, travis_data["PerCapita"], '-', marker='o', label="Travis County, TX")
-san_diego_line = ax[1].plot(san_diego_dates, san_diego_data["PerCapita"], '-', marker='o', label="San Diego County, CA")
-los_angeles_line = ax[1].plot(los_angeles_dates, los_angeles_data["PerCapita"], '-', marker='o', label="Los Angeles County, CA")
-clark_line = ax[1].plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
-salt_lake_line = ax[1].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
-utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
-miamidade_line = ax[1].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='o', label="Miami-Dade County, FL")
+harris_line = ax[1].plot(harris_datetimes, harris_data["PerCapita"], '-', marker='.', label="Harris County, TX")
+maricopa_line = ax[1].plot(maricopa_datetimes, maricopa_data["PerCapita"], '-', marker='.', label="Maricopa County, AZ")
+travis_line = ax[1].plot(travis_dates, travis_data["PerCapita"], '-', marker='.', label="Travis County, TX")
+san_diego_line = ax[1].plot(san_diego_dates, san_diego_data["PerCapita"], '-', marker='.', label="San Diego County, CA")
+los_angeles_line = ax[1].plot(los_angeles_dates, los_angeles_data["PerCapita"], '-', marker='.', label="Los Angeles County, CA")
+clark_line = ax[1].plot(clark_dates, clark_data["PerCapita"], '-', marker='.', label="Clark County, NV")
+salt_lake_line = ax[1].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='.', label="Salt Lake County, UT")
+utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], '-', marker='.', label="Utah County, UT")
+miamidade_line = ax[1].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='.', label="Miami-Dade County, FL")
 
+one_month_ago = datetime.now() - timedelta(days=90)
+ax[1].set_xlim(one_month_ago, datetime.now())
 ax[1].set_xlabel('Date')
 ax[1].set_ylabel('Cumulative COVID-19 Cases Per 100 People')
-ax[1].set_title('Cumulative Percentage of Population That Has Been Infected With COVID-19 (Without Westchester)')
+ax[1].set_title('Cumulative Percentage of Population That Has Been Infected With COVID-19 (Past 90 Days)')
 ax[1].legend()
 
 
