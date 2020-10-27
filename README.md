@@ -162,7 +162,7 @@ crontab -e
 
 Then, add this to the first line of your crontab
 ```
-01 00 * * * su -s /bin/sh root -c 'cd /root/COVID_JSC && /usr/bin/git pull origin master && /root/anaconda3/bin/python fetch.py | /usr/bin/tee /root/fetchlog.log && /usr/bin/git add * | /usr/bin/tee /root/addstar.log && /usr/bin/git commit -m "Cron autoupdate" | /usr/bin/tee /root/commitlog.log && /usr/bin/git push -u origin master >> /root/gitpushlog.log 2>&1'
+01 00 * * * su -s /bin/sh root -c 'cd /root/COVID_JSC && /usr/bin/git fetch --all && /usr/bin/git reset --hard origin/master && /usr/bin/git pull origin master && /root/anaconda3/bin/python fetch.py | /usr/bin/tee /root/fetchlog.log && /usr/bin/git add * | /usr/bin/tee /root/addstar.log && /usr/bin/git commit -m "Cron autoupdate" | /usr/bin/tee /root/commitlog.log && /usr/bin/git push -u origin master >> /root/gitpushlog.log 2>&1'
 ```
 
 This tells cron to run this command on the first minute of the 0th hour (midnight) every day of month, every day, every day of week. The `su -s` executes as a super user. The logs get saved into the root folder of the DO server, so you'll have to log into the DO terminal to see them.
