@@ -76,6 +76,7 @@ ax[1].plot(datetime_list, harris_data["Confirmed_Cum_Moving"], '-', linewidth=3,
 fig.autofmt_xdate()
 ax[1].fmt_xdata = mdates.DateFormatter('%m-%d-%Y')
 ax[1].xaxis.set_major_locator(mdates.AutoDateLocator())
+ax[0].set_ylim(0,8000)
 ax[1].set_xlabel('Date')
 ax[0].set_ylabel('Daily Confirmed Cases')
 ax[1].set_ylabel('Cumulative Confirmed Cases')
