@@ -18,10 +18,15 @@ This app was created on top of python-getting-started. The readme for the origin
 ## Test on your local.
 
 Create a virtual environment to test the app on your local machine.
-
 ```sh
-$ conda env export -n venv
-$ source activate venv
+$ conda create virtualenv -n covid
+
+```
+
+Start up that new env.
+```sh
+$ conda env export -n covid
+$ source activate covid
 $ pip install -r requirements.txt
 ```
 
