@@ -28,6 +28,11 @@ for i in range(len(confirmed_data)):
 		daily_confirmed.append(confirmed_data[i]-confirmed_data[i-1])
 westchester_data["Daily_Confirmed"] = daily_confirmed
 
+# determine outliers
+q_low = westchester_data["Daily_Confirmed"].quantile(0.01)
+q_hi  = westchester_data["Daily_Confirmed"].quantile(0.99)
+df_filtered = westchester_data[(westchester_data["Daily_Confirmed"] < q_hi) & (westchester_data["Daily_Confirmed"] > q_low)]
+
 #Calculate whether negative or postive trend in last 14 days
 date_list = westchester_data["Date"].tolist()
 
@@ -85,6 +90,12 @@ ax[1].plot(datetime_list, westchester_data["Confirmed_Cum_Moving"], '-', linewid
 fig.autofmt_xdate()
 ax[1].fmt_xdata = mdates.DateFormatter('%m-%d-%Y')
 ax[1].xaxis.set_major_locator(mdates.AutoDateLocator())
+# set y-max without outliers
+if df_filtered.Daily_Confirmed.max() > westchester_data.Confirmed_Moving.max():
+	my_y_max = df_filtered.Daily_Confirmed.max()
+else:
+	my_y_max = westchester_data.Confirmed_Moving.max() + 100
+ax[0].set_ylim(0,my_y_max)
 ax[1].set_xlabel('Date')
 ax[0].set_ylabel('Daily Confirmed Cases')
 ax[1].set_ylabel('Cumulative Confirmed Cases')
