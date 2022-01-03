@@ -68,6 +68,12 @@ def miamidade(request): #this allows the code to render the plotfile.html file
 def plotmiamidade(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/plotmiamidade.html')
 
+def mclennan(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/mclennan.html')
+
+def plotmclennan(request): #this allows the code to render the plotfile.html file
+    return render(request, 'core/plotmclennan.html')
+
 def westchester(request): #this allows the code to render the plotfile.html file
     return render(request, 'core/westchester.html')
 

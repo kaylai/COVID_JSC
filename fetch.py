@@ -20,6 +20,12 @@ print("Maricopa Co., AZ")
 import get_data_maricopa
 import plots_maricopa
 
+# import mclennan modules
+sys.path.append('McLennan/')
+print("McLennan Co., TX")
+import get_data_mclennan
+import plots_mclennan
+
 #import utah modules
 sys.path.append('Utah/')
 print("Utah Co., UT")

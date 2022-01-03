@@ -7,6 +7,16 @@ from mpld3 import plugins, utils
 from datetime import datetime, timedelta
 import custom_plugins as mplm
 
+# for custom rainbow color cycler
+from matplotlib.pyplot import cm
+from itertools import cycle
+
+# n = number of curves to plot
+n = 11
+color = cycle(cm.rainbow(np.linspace(0, 1, n)))
+lines = ["-","--","-.",":"]
+line_style = cycle(lines)
+
 #Pull in the data created by get_data.py
 harris_data = pd.read_excel("Harris_Data.xlsx")
 harris_data["Date"] = harris_data["Date"].astype('datetime64[ns]')
@@ -50,10 +60,14 @@ miamidade_data = pd.read_excel("MiamiDade_Data.xlsx")
 miamidade_data["Date"] = miamidade_data["Date"].astype('datetime64[ns]')
 miamidade_dates = miamidade_data["Date"].tolist()
 
+mclennan_data = pd.read_excel("mclennan_Data.xlsx")
+mclennan_data["Date"] = mclennan_data["Date"].astype('datetime64[ns]')
+mclennan_dates = mclennan_data["Date"].tolist()
+
 county_dict = {'harris': harris_data, 'maricopa': maricopa_data, 'san_diego': san_diego_data, 
 		       'salt_lake': salt_lake_data, 'utah': utah_data, 'clark': clark_data,
 		       'travis': travis_data, 'westchester': westchester_data, 'los_angeles': los_angeles_data,
-		       'miamidade': miamidade_data}
+		       'miamidade': miamidade_data, 'mclennan': mclennan_data}
 
 """
 Population Source
@@ -67,7 +81,7 @@ Source: American Community Survey (ACS)
 population_dict = {'harris': 4602523, 'maricopa': 4253913, 'san_diego': 3302833, 
 				   'salt_lake': 1120805, 'utah': 590440, 'clark': 2141574,
 				   'travis': 1203166, 'westchester': 968815, 'los_angeles': 10098052,
-				   'miamidade': 2715516}
+				   'miamidade': 2715516, 'mclennan': 251089}
 
 #Calculate cumulative totals as a percentage of the total population
 for county, data in county_dict.items():
@@ -77,16 +91,17 @@ for county, data in county_dict.items():
 
 #DO SOME EPLOTTING
 fig, ax = plt.subplots(2, figsize=(10,10))
-harris_line = ax[0].plot(harris_datetimes, harris_data["PerCapita"], '-', marker='o', label="Harris County, TX")
-maricopa_line = ax[0].plot(maricopa_datetimes, maricopa_data["PerCapita"], '-', marker='o', label="Maricopa County, AZ")
-travis_line = ax[0].plot(travis_dates, travis_data["PerCapita"], '-', marker='o', label="Travis County, TX")
-san_diego_line = ax[0].plot(san_diego_dates, san_diego_data["PerCapita"], '-', marker='o', label="San Diego County, CA")
-los_angeles_line = ax[0].plot(los_angeles_dates, los_angeles_data["PerCapita"], '-', marker='o', label="Los Angeles County, CA")
-clark_line = ax[0].plot(clark_dates, clark_data["PerCapita"], '-', marker='o', label="Clark County, NV")
-salt_lake_line = ax[0].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='o', label="Salt Lake County, UT")
-utah_line = ax[0].plot(utah_dates, utah_data["PerCapita"], '-', marker='o', label="Utah County, UT")
-miamidade_line = ax[0].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='o', label="Miami-Dade County, FL")
-westchester_line = ax[0].plot(westchester_dates, westchester_data["PerCapita"], '-', marker='o', label="Westchester County, NY")
+harris_line = ax[0].plot(harris_datetimes, harris_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Harris County, TX")
+maricopa_line = ax[0].plot(maricopa_datetimes, maricopa_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Maricopa County, AZ")
+travis_line = ax[0].plot(travis_dates, travis_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Travis County, TX")
+san_diego_line = ax[0].plot(san_diego_dates, san_diego_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="San Diego County, CA")
+los_angeles_line = ax[0].plot(los_angeles_dates, los_angeles_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Los Angeles County, CA")
+clark_line = ax[0].plot(clark_dates, clark_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Clark County, NV")
+salt_lake_line = ax[0].plot(salt_lake_dates, salt_lake_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Salt Lake County, UT")
+utah_line = ax[0].plot(utah_dates, utah_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Utah County, UT")
+miamidade_line = ax[0].plot(miamidade_dates, miamidade_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Miami-Dade County, FL")
+westchester_line = ax[0].plot(westchester_dates, westchester_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Westchester County, NY")
+mclennan_line = ax[0].plot(mclennan_dates, mclennan_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="McLennan County, TX")
 
 ax[0].set_xlabel('Date')
 ax[0].set_ylabel('Cumulative COVID-19 Cases Per 100 People')
@@ -104,17 +119,20 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(westchester_line[0],labels=westchester_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],labels=los_angeles_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(miamidade_line[0],labels=miamidade_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(mclennan_line[0],labels=mclennan_data["PerCapita"].tolist()))
 
 #PLOT A SECOND FIGURE
-harris_line = ax[1].plot(harris_datetimes, harris_data["PerCapita"], '-', marker='.', label="Harris County, TX")
-maricopa_line = ax[1].plot(maricopa_datetimes, maricopa_data["PerCapita"], '-', marker='.', label="Maricopa County, AZ")
-travis_line = ax[1].plot(travis_dates, travis_data["PerCapita"], '-', marker='.', label="Travis County, TX")
-san_diego_line = ax[1].plot(san_diego_dates, san_diego_data["PerCapita"], '-', marker='.', label="San Diego County, CA")
-los_angeles_line = ax[1].plot(los_angeles_dates, los_angeles_data["PerCapita"], '-', marker='.', label="Los Angeles County, CA")
-clark_line = ax[1].plot(clark_dates, clark_data["PerCapita"], '-', marker='.', label="Clark County, NV")
-salt_lake_line = ax[1].plot(salt_lake_dates, salt_lake_data["PerCapita"], '-', marker='.', label="Salt Lake County, UT")
-utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], '-', marker='.', label="Utah County, UT")
-miamidade_line = ax[1].plot(miamidade_dates, miamidade_data["PerCapita"], '-', marker='.', label="Miami-Dade County, FL")
+harris_line = ax[1].plot(harris_datetimes, harris_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Harris County, TX")
+maricopa_line = ax[1].plot(maricopa_datetimes, maricopa_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Maricopa County, AZ")
+travis_line = ax[1].plot(travis_dates, travis_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Travis County, TX")
+san_diego_line = ax[1].plot(san_diego_dates, san_diego_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="San Diego County, CA")
+los_angeles_line = ax[1].plot(los_angeles_dates, los_angeles_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Los Angeles County, CA")
+clark_line = ax[1].plot(clark_dates, clark_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Clark County, NV")
+salt_lake_line = ax[1].plot(salt_lake_dates, salt_lake_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Salt Lake County, UT")
+utah_line = ax[1].plot(utah_dates, utah_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Utah County, UT")
+miamidade_line = ax[1].plot(miamidade_dates, miamidade_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Miami-Dade County, FL")
+westchester_line = ax[1].plot(westchester_dates, westchester_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="Westchester County, TX")
+mclennan_line = ax[1].plot(mclennan_dates, mclennan_data["PerCapita"], linestyle=next(line_style), c=next(color), linewidth=3, label="McLennan County, TX")
 
 one_month_ago = datetime.now() - timedelta(days=90)
 ax[1].set_xlim(one_month_ago, datetime.now())
@@ -133,6 +151,8 @@ mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(clark_line[0],labels=
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(travis_line[0],labels=travis_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(los_angeles_line[0],labels=los_angeles_data["PerCapita"].tolist()))
 mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(miamidade_line[0],labels=miamidade_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(westchester_line[0],labels=westchester_data["PerCapita"].tolist()))
+mpld3.plugins.connect(fig, mpld3.plugins.PointLabelTooltip(mclennan_line[0],labels=mclennan_data["PerCapita"].tolist()))
 
 mpld3.save_html(fig, "uploads/core/templates/core/plotpercapita.html")
 
