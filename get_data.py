@@ -4,8 +4,11 @@ import requests
 from datetime import datetime
 
 #Import data file if it already exists
-past_data = pd.read_excel("Harris_Data.xlsx")
-past_dates = past_data["Date"].tolist()
+try:
+	past_data = pd.read_excel("Harris_Data.xlsx")
+	past_dates = past_data["Date"].tolist()
+except:
+	past_dates = []
 
 #Get today's date and then generate a list of dates starting 01-22-2020 and ending today
 todays_date = datetime.today().strftime('%m-%d-%Y')
@@ -89,7 +92,10 @@ for date in daterange:
 		
 
 #Append newly grabbed data to the existing data
-harris_data = past_data.copy()
+try:
+	harris_data = past_data.copy()
+except:
+	harris_data = pd.DataFrame({})
 for i in range(len(good_dates)):
 	harris_data = harris_data.append({"Date": good_dates[i], "Confirmed": confirmed[i],
 									  "Deaths": deaths[i], "Recovered": recovered[i],

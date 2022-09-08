@@ -4,8 +4,12 @@ import requests
 from datetime import datetime
 
 #Import data file if it already exists
-past_data = pd.read_excel("Salt_Lake_Data.xlsx")
-past_dates = past_data["Date"].tolist()
+try:
+	past_data = pd.read_excel("Salt_Lake_Data.xlsx")
+	past_dates = past_data["Date"].tolist()
+except:
+	past_dates = []
+	past_data = pd.DataFrame({})
 
 #Get today's date and then generate a list of dates starting 01-22-2020 and ending today
 todays_date = datetime.today().strftime('%m-%d-%Y')
